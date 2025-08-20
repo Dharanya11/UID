@@ -18,9 +18,30 @@ class Car extends React.Component {
     return <h2>It is a {this.state.color} car!</h2>;
   }
 }
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { favouritecolor: "blue" };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ favouritecolor: "black" });
+    }, 200);
+  }
+
+  render() {
+    return (
+      <h1>My favourite color is {this.state.favouritecolor}</h1>
+    );
+  }
+}
+
+
 
 function App() {
   const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -67,6 +88,7 @@ function App() {
         </div>
         <div>
           <Car />
+          <Header />
         </div>
       </header>
     </div>
